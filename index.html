@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NovaParts — PC Components</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">NovaParts</a>
+
+  <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav id="mainnav" class="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="card home-hero">
+    <div class="hero-copy">
+      <h1>Build smarter. <span class="grad">Buy better.</span></h1>
+      <p class="muted">
+        Minimal, fast, and curated PC parts for gamers and creators.
+        No fluff—just the best picks right now.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn primary" href="shop.html">Browse components</a>
+        <a class="btn ghost" href="about.html">Why NovaParts?</a>
+      </div>
+
+      <ul class="hero-stats">
+  <li>
+    <span>3.2k+</span>
+    <small>happy builders</small>
+  </li>
+  <li>
+    <span>150+</span>
+    <small>tested parts</small>
+  </li>
+  <li>
+    <span>4.9★</span>
+    <small>avg. rating</small>
+  </li>
+</ul>
+
+    </div>
+
+    <div class="hero-media">
+      <img
+        class="hero-img"
+        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop"
+        alt="Minimal desktop setup"
+        width="1600" height="1066" loading="eager" />
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <h2 class="section-title">Shop by category</h2>
+  <section class="grid home-cats">
+    <a class="card cat" href="shop.html#gpu">
+      <img src="https://images.unsplash.com/photo-1612198185326-6f7d2d4b5f9a?q=80&w=1400&auto=format&fit=crop" alt="">
+      <strong>GPUs</strong>
+      <span class="muted">1440p & 4K favorites</span>
+    </a>
+    <a class="card cat" href="shop.html#cpu">
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop" alt="">
+      <strong>CPUs</strong>
+      <span class="muted">Gaming & creator chips</span>
+    </a>
+    <a class="card cat" href="shop.html#ram">
+      <img src="https://images.unsplash.com/photo-1628489144547-e5c38a4df2fd?q=80&w=1400&auto=format&fit=crop" alt="">
+      <strong>Memory</strong>
+      <span class="muted">Fast DDR5 kits</span>
+    </a>
+    <a class="card cat" href="shop.html#storage">
+      <img src="https://images.unsplash.com/photo-1614064641938-3bbee52958c4?q=80&w=1400&auto=format&fit=crop" alt="">
+      <strong>Storage</strong>
+      <span class="muted">NVMe best value</span>
+    </a>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <h2 class="section-title">Editor’s highlights</h2>
+  <section class="grid highlights">
+    <article class="card hi">
+      <div class="hi-badge">Pick</div>
+      <h3>Ryzen 7 7800X3D</h3>
+      <p class="muted">Still the gaming king for most setups. Pair with a mid-range GPU for insane value.</p>
+      <a class="btn ghost" href="shop.html#cpu">View CPUs</a>
+    </article>
+
+    <article class="card hi">
+      <div class="hi-badge">Value</div>
+      <h3>NVMe SSD 2TB</h3>
+      <p class="muted">PCIe 4.0 speeds without the premium. Perfect main drive for gaming rigs.</p>
+      <a class="btn ghost" href="shop.html#storage">View Storage</a>
+    </article>
+
+    <article class="card hi">
+      <div class="hi-badge">Quiet</div>
+      <h3>240mm AIO</h3>
+      <p class="muted">Excellent thermals, low noise, clean look. Stealth build approved.</p>
+      <a class="btn ghost" href="shop.html#cooler">View Coolers</a>
+    </article>
+  </section>
+
+  <!-- CTA -->
+  <section class="card callout">
+    <h2>Need a parts list for your budget?</h2>
+    <p class="muted">Tell us what you play and your target resolution—we’ll suggest a clean, balanced build.</p>
+    <a class="btn primary" href="contact.html">Get recommendations</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> NovaParts</p>
+</footer>
+</body>
+</html>

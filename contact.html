@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — NovaParts</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="index.html">NovaParts</a>
+  <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="mainnav" class="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1>Contact</h1>
+  <form class="card form">
+  <label>
+    <span>Name</span>
+    <input name="name" type="text" placeholder="Your name" required />
+  </label>
+  <label>
+    <span>Email</span>
+    <input name="email" type="email" placeholder="you@example.com" required />
+  </label>
+  <label>
+    <span>Message</span>
+    <textarea name="message" rows="5" placeholder="Hello…" required></textarea>
+  </label>
+  <button class="btn" type="submit">Send</button>
+</form>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> NovaParts</p>
+</footer>
+</body>
+</html>
