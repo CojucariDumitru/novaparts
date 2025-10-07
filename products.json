@@ -1,0 +1,101 @@
+[
+  {
+    "id": "gpu_rtx4070",
+    "title": "GeForce RTX 4070",
+    "brand": "NVIDIA",
+    "sku": "GPU-4070",
+    "category": "GPUs",
+    "price": 599.0,
+    "rating": 4.7,
+    "image": "https://postperspective.com/wp-content/uploads/2023/01/ezgif.com-gif-maker4-624x416.png",
+    "description": "12GB GDDR6X • Great 1440p"
+  },
+  {
+    "id": "gpu_rx7800xt",
+    "title": "Radeon RX 7800 XT",
+    "brand": "AMD",
+    "sku": "GPU-7800XT",
+    "category": "GPUs",
+    "price": 549.0,
+    "rating": 4.6,
+    "image": "https://pg.asrock.com/Graphics-Card/photo/Radeon%20RX%207800%20XT%20Phantom%20Gaming%2016GB%20OC(L4).png",
+    "description": "16GB GDDR6 • Value pick"
+  },
+  {
+    "id": "cpu_7800x3d",
+    "title": "Ryzen 7 7800X3D",
+    "brand": "AMD",
+    "sku": "CPU-7800X3D",
+    "category": "CPUs",
+    "price": 449.0,
+    "rating": 4.9,
+    "image": "https://content.ibuypower.com/Images/Components/30136/CPU-AMDR7-7800X3D-2400.png",
+    "description": "8C/16T • Gaming king"
+  },
+  {
+    "id": "cpu_i7_13700k",
+    "title": "Intel Core i7-13700K",
+    "brand": "Intel",
+    "sku": "CPU-13700K",
+    "category": "CPUs",
+    "price": 419.0,
+    "rating": 4.7,
+    "image": "https://altex.com/cdn/shop/files/intel-core-i7-13700k-13th-gen-34ghz-16-core-lga1700-i7-processor-560590.png?v=1733277067",
+    "description": "16C (8P+8E) • Hybrid"
+  },
+  {
+    "id": "ram_32_6000",
+    "title": "DDR5 32GB (2×16) 6000 CL30",
+    "brand": "G.Skill",
+    "sku": "RAM-32-6000",
+    "category": "Memory",
+    "price": 109.0,
+    "rating": 4.8,
+    "image": "https://assets.micron.com/adobe/assets/urn:aaid:aem:835a69f3-ac69-45ab-8fc1-2d5c14cefb8c/renditions/transformpng-1024-1024.png/as/crucial-ddr5-pro-udimm-kit-front.png",
+    "description": "Fast DDR5 kit"
+  },
+  {
+    "id": "ssd_1tb",
+    "title": "NVMe SSD 1TB Gen4",
+    "brand": "Crucial",
+    "sku": "SSD-1TB-G4",
+    "category": "Storage",
+    "price": 89.0,
+    "rating": 4.7,
+    "image": "https://static.gigabyte.com/StaticFile/Image/Global/13fdaa6e6dc982d0753d32c70c23d92c/Product/30161/Png",
+    "description": "PCIe 4.0 • 5,000 MB/s"
+  },
+  {
+    "id": "ssd_2tb",
+    "title": "NVMe SSD 2TB Gen4",
+    "brand": "WD Black",
+    "sku": "SSD-2TB-G4",
+    "category": "Storage",
+    "price": 149.0,
+    "rating": 4.8,
+    "image": "https://assets.micron.com/adobe/assets/urn:aaid:aem:88eb2127-300d-46bf-ad90-822ef0708611/renditions/transformpng-1024-1024.png/as/crucial-ssd-p310-2280-front-view.png",
+    "description": "PCIe 4.0 • 7,000 MB/s"
+  },
+  {
+    "id": "aio_240",
+    "title": "240mm AIO",
+    "brand": "Corsair",
+    "sku": "AIO-240",
+    "category": "Coolers",
+    "price": 109.0,
+    "rating": 4.6,
+    "image": "https://nzxt.com/cdn/shop/files/01_kraken_black_fp-fans_240_603130e9-25c4-4fca-9962-873187c8d0b4.png?v=1744881181",
+    "description": "Quiet • Great thermals"
+  },
+  {
+    "id": "case_mesh",
+    "title": "ATX Mesh Case",
+    "brand": "Lian Li",
+    "sku": "CASE-MESH",
+    "category": "Cases",
+    "price": 99.0,
+    "rating": 4.5,
+    "image": "https://www.darkflash.com/cdn/product/meta/000000000000125/202403010010209.png",
+    "description": "High airflow • Clean look"
+  }
+]

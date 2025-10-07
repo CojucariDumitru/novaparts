@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop • NovaParts</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" ></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container row">
+      <div class="brand"><a href="index.html">NovaParts</a></div>
+      <div class="menu"><a href="index.html">Home</a><a href="shop.html" class="active">Shop</a><a
+          href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="icons"><button class="iconbtn" id="themeToggle">🌓</button><button class="iconbtn"
+          id="openCart">🛒<span class="badge" id="cartCount">0</span></button></div>
+    </div>
+  </nav>
+  <main class="container">
+    <section class="shop-head">
+      <div class="shop-card">
+        <h2 style="margin:0 0 6px">Curated PC Components</h2>
+        <p class="small" style="margin:0 0 8px">Only the parts we’d buy ourselves. Filter by category below.</p>
+
+        <div id="filterPills" class="pills">
+          <!-- Pills are rendered by JS so active state stays in sync,
+             but you can keep this fallback static list in case JS fails -->
+          <button class="pill active" data-cat="All"><span class="dot"></span>All</button>
+          <button class="pill" data-cat="GPUs">GPUs</button>
+          <button class="pill" data-cat="CPUs">CPUs</button>
+          <button class="pill" data-cat="Memory">Memory</button>
+          <button class="pill" data-cat="Storage">Storage</button>
+          <button class="pill" data-cat="Coolers">Coolers</button>
+          <button class="pill" data-cat="Cases">Cases</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="productGrid" class="grid"></div>
+  </main>
+
+  <footer class="container" style="padding:24px 0;color:#9aa4af">© <span id="year"></span> NovaParts</footer>
+  <div class="np-backdrop" id="npBackdrop"></div>
+  <aside class="np-cart" id="npCart">
+    <header><strong>Your cart</strong>
+      <div style="display:flex; gap:8px"><button class="btn ghost" id="headerClear">Clear</button><button
+          class="iconbtn" id="closeCart">✖</button></div>
+    </header>
+    <div class="np-lines" id="npLines"></div>
+    <div class="np-foot">
+      <div>
+        <div class="np-muted">Subtotal</div>
+        <div id="cartSubtotal" class="price">$0.00</div>
+      </div><a href="checkout.html" class="btn" id="footerCheckout">Checkout</a>
+    </div>
+  </aside>
+  <div class="np-toast" id="npToast">Item updated</div>
+  <div class="np-modal" id="npModal">
+    <div class="overlay"></div>
+    <div class="sheet"><img id="modalImg" />
+      <div class="p">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc" class="np-muted"></p>
+        <div class="price-row">
+          <div class="price" id="modalPrice"></div>
+          <div class="np-muted" id="modalSku"></div>
+        </div>
+        <div style="display:flex; gap:8px"><button class="btn" id="modalAdd">Add to cart</button><button
+            class="btn ghost" id="modalClose">Close</button></div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

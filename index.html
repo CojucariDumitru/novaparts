@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NovaParts</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js"></script>
+  <link rel="icon" type="img/ico" href="./img/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container row">
+      <a href="index.html" class="brand" id="brandLink">NovaParts</a>
+
+      <div class="menu" id="mainMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="icons">
+        <button id="themeToggle" class="iconbtn" aria-label="Toggle theme">🌗</button>
+        <button id="openCart" class="iconbtn" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+        <button id="hamburger" class="iconbtn only-mobile" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </nav>
+  <nav id="sideMenu" class="drawer">
+    <div class="drawer-head">
+      <strong>Menu</strong>
+      <button id="closeDrawer" class="iconbtn">✕</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="panel">
+        <h1>Build smarter. <span style="color:#60a5fa">Buy</span> <span style="color:#a78bfa">better</span>.</h1>
+        <p>Minimal, fast, and curated PC parts for gamers and creators. No fluff—just the best picks right now.</p>
+        <div class="actions"><a href="shop.html" class="btn">Browse components</a><a href="./about.html"
+            class="btn ghost">Why NovaParts?</a></div>
+        <div class="statgrid">
+          <div class="stat">3.2k+ happy builders</div>
+          <div class="stat">150+ tested parts</div>
+          <div class="stat">4.9★ avg. rating</div>
+        </div>
+      </div>
+      <div class="panel"><img class="thumb" src="./img/board.png" alt="hero"></div>
+    </section>
+
+    <h2 class="section-title">Shop by category</h2>
+    <div class="catrow">
+      <a class="cat" href="shop.html#GPUs"><img
+          src="https://postperspective.com/wp-content/uploads/2023/01/ezgif.com-gif-maker4-624x416.png" alt="">
+        <div>
+          <div><strong>GPUs</strong></div>
+          <div class="small">1440p & 4K favorites</div>
+        </div>
+      </a>
+      <a class="cat" href="shop.html#CPUs"><img
+          src="https://altex.com/cdn/shop/files/intel-core-i7-13700k-13th-gen-34ghz-16-core-lga1700-i7-processor-560590.png?v=1733277067"
+          alt="">
+        <div>
+          <div><strong>CPUs</strong></div>
+          <div class="small">Gaming & creator chips</div>
+        </div>
+      </a>
+      <a class="cat" href="shop.html#Memory"><img
+          src="https://assets.micron.com/adobe/assets/urn:aaid:aem:835a69f3-ac69-45ab-8fc1-2d5c14cefb8c/renditions/transformpng-1024-1024.png/as/crucial-ddr5-pro-udimm-kit-front.png"
+          alt="">
+        <div>
+          <div><strong>Memory</strong></div>
+          <div class="small">Fast DDR5 kits</div>
+        </div>
+      </a>
+      <a class="cat" href="shop.html#Storage"><img
+          src="https://assets.micron.com/adobe/assets/urn:aaid:aem:88eb2127-300d-46bf-ad90-822ef0708611/renditions/transformpng-1024-1024.png/as/crucial-ssd-p310-2280-front-view.png"
+          alt="">
+        <div>
+          <div><strong>Storage</strong></div>
+          <div class="small">NVMe best value</div>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title">Editor’s highlights</h2>
+    <div id="productGrid" class="grid"></div>
+  </main>
+  <footer class="container" style="padding:24px 0;color:#9aa4af">© <span id="year"></span> NovaParts</footer>
+
+  <div class="np-backdrop" id="npBackdrop"></div>
+  <aside class="np-cart" id="npCart">
+    <header><strong>Your cart</strong>
+      <div style="display:flex; gap:8px"><button class="btn ghost" id="headerClear">Clear</button><button
+          class="iconbtn" id="closeCart">✖</button></div>
+    </header>
+    <div class="np-lines" id="npLines"></div>
+    <div class="np-foot">
+      <div>
+        <div class="np-muted">Subtotal</div>
+        <div id="cartSubtotal" class="price">$0.00</div>
+      </div><a href="checkout.html" class="btn" id="footerCheckout">Checkout</a>
+    </div>
+  </aside>
+  <div class="np-toast" id="npToast">Item updated</div>
+
+  <div class="np-modal" id="npModal">
+    <div class="overlay"></div>
+    <div class="sheet"><img id="modalImg" />
+      <div class="p">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc" class="np-muted"></p>
+        <div class="price-row">
+          <div class="price" id="modalPrice"></div>
+          <div class="np-muted" id="modalSku"></div>
+        </div>
+        <div style="display:flex; gap:8px"><button class="btn" id="modalAdd">Add to cart</button><button
+            class="btn ghost" id="modalClose">Close</button></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

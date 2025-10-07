@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact • NovaParts</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container row">
+      <div class="brand"><a href="index.html">NovaParts</a></div>
+      <div class="menu"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a
+          href="contact.html" class="active">Contact</a></div>
+      <div class="icons"><button class="iconbtn" id="themeToggle">🌓</button><button class="iconbtn"
+          id="openCart">🛒<span class="badge" id="cartCount">0</span></button></div>
+    </div>
+  </nav>
+  <main class="container">
+    <div class="cardish" style="margin:24px 0">
+      <h2 style="margin:0 0 12px">Contact</h2>
+      <div class="form-grid">
+        <div class="full"><label>Name</label><input placeholder="Your name" /></div>
+        <div><label>Email</label><input placeholder="you@example.com" /></div>
+        <div class="full"><label>Message</label><textarea placeholder="Hello…"></textarea></div>
+        <div class="full"><button class="btn">Send</button></div>
+      </div>
+    </div>
+  </main>
+  <footer class="container" style="padding:24px 0;color:#9aa4af">© <span id="year"></span> NovaParts</footer>
+  <div class="np-backdrop" id="npBackdrop"></div>
+  <aside class="np-cart" id="npCart">
+    <header><strong>Your cart</strong>
+      <div style="display:flex; gap:8px"><button class="btn ghost" id="headerClear">Clear</button><button
+          class="iconbtn" id="closeCart">✖</button></div>
+    </header>
+    <div class="np-lines" id="npLines"></div>
+    <div class="np-foot">
+      <div>
+        <div class="np-muted">Subtotal</div>
+        <div id="cartSubtotal" class="price">$0.00</div>
+      </div><a href="checkout.html" class="btn" id="footerCheckout">Checkout</a>
+    </div>
+  </aside>
+  <div class="np-toast" id="npToast">Item updated</div>
+  <script src="app.js"></script>
+</body>
+
+</html>

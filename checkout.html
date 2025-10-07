@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout • NovaParts</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container row">
+      <div class="brand"><a href="index.html">NovaParts</a></div>
+      <div class="menu"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a
+          href="contact.html">Contact</a></div>
+      <div class="icons"><a href="index.html" class="btn ghost">Back</a></div>
+    </div>
+  </nav>
+  <main class="container">
+    <h2 class="section-title">Shipping & Payment</h2>
+    <section class="checkout">
+      <div class="cardish">
+        <form id="checkoutForm">
+          <div class="form-grid">
+            <div><label>First name</label><input required placeholder="John" /></div>
+            <div><label>Last name</label><input required placeholder="Doe" /></div>
+            <div><label>Email</label><input type="email" required placeholder="you@example.com" /></div>
+            <div><label>Phone</label><input placeholder="+1 555 555 5555" /></div>
+            <div><label>ZIP</label><input placeholder="94105" /></div>
+            <div><label>Address</label><input placeholder="123 Market St" /></div>
+            <div><label>City</label><input placeholder="San Francisco" /></div>
+            <div><label>Country</label><input placeholder="USA" /></div>
+            <div class="full">
+              <h3 style="margin:16px 0 8px">Payment</h3>
+              <div class="card-preview" id="cardPreview">
+                <div class="row">
+                  <div class="card-chip"></div><img id="cardBrand" alt="brand" />
+                </div>
+                <div class="row" style="letter-spacing:1px; font-variant-numeric: tabular-nums; font-size: 20px;"
+                  id="cardNumberPreview">•••• •••• •••• ••••</div>
+                <div class="row">
+                  <div class="kv"><span class="box" id="cardNamePreview">CARDHOLDER NAME</span><span class="box"
+                      id="cardExpPreview">MM/YY</span></div>
+                  <div class="kv"><span class="box" id="cardCvcPreview">CVC</span></div>
+                </div>
+              </div>
+            </div>
+            <div><label>Cardholder name</label><input id="cc_name" placeholder="John Doe" /></div>
+            <div class="full"></div>
+            <div><label>Card number</label><input id="cc_number" placeholder="4242 4242 4242 4242" inputmode="numeric"
+                maxlength="19" /></div>
+            <div><label>Expiry (MM/YY)</label><input id="cc_exp" placeholder="12/28" maxlength="5" /></div>
+            <div><label>CVC</label><input id="cc_cvc" placeholder="123" maxlength="4" /></div>
+            <div><label>Notes</label><input placeholder="Anything we should know?" /></div>
+          </div>
+          <div style="margin-top:16px; display:flex; justify-content:flex-end;"><button type="submit" class="btn">Place
+              order</button></div>
+        </form>
+      </div>
+      <div class="cardish order-summary" id="summary">
+        <h3 style="margin-top:0">Order summary</h3>
+        <div id="summaryItems"></div>
+        <div class="row"><span>Subtotal</span><strong id="sumSubtotal">$0.00</strong></div>
+        <div class="row"><span>Shipping</span><span>Free</span></div>
+        <div class="row total"><span>Total</span><strong id="sumTotal">$0.00</strong></div>
+      </div>
+    </section>
+  </main>
+  <footer class="container" style="padding:24px 0;color:#9aa4af">© <span id="year"></span> NovaParts</footer>
+  <script src="app.js"></script>
+</body>
+
+</html>
