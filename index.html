@@ -1,145 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Charset & viewport -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Title -->
   <title>NovaParts — PC Components</title>
+
+  <!-- Primary SEO -->
+  <meta name="description" content="Curated PC components for gamers & creators. Minimal, honest, fast.">
+  <link rel="canonical" href="https://cojucaridumitru.github.io/novaparts/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0f141b">
+
+  <!-- Icons -->
+  <link rel="icon" href="img/favicon.ico" sizes="any">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="NovaParts">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NovaParts — Curated PC Components">
+  <meta property="og:description" content="Only the parts we’d buy ourselves.">
+  <meta property="og:url" content="https://cojucaridumitru.github.io/novaparts/">
+  <meta property="og:image" content="https://cojucaridumitru.github.io/novaparts/img/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CojucariDumitru">
+  <meta name="twitter:title" content="NovaParts — Curated PC Components">
+  <meta name="twitter:description" content="Only the parts we’d buy ourselves.">
+  <meta name="twitter:image" content="https://cojucaridumitru.github.io/novaparts/img/og-cover.png">
+
+  <!-- Preload hero (optional) -->
+  <link rel="preload" as="image" href="img/hero-board.png">
+
+  <!-- CSS & JS -->
   <link rel="stylesheet" href="css/style.css" />
   <script defer src="js/script.js"></script>
-  <link rel="alternate icon" href="img/favicon.ico">
-  <link rel="preload" as="image" href="img/hero-board.png" imagesrcset="img/hero-board.png" imagesizes="100vw">
-  <!-- Basic SEO -->
-<meta name="description" content="Curated PC components for gamers & creators. Minimal, honest, fast." />
-<link rel="canonical" href="https://cojucaridumitru.github.io/novaparts/" />
-
-<!-- Open Graph / Twitter -->
-<meta property="og:title" content="NovaParts — Curated PC Components">
-<meta property="og:description" content="Only the parts we’d buy ourselves." />
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://cojucaridumitru.github.io/novaparts/">
-<meta property="og:image" content="https://cojucaridumitru.github.io/novaparts/img/og-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@CojucariDumitru">
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <a class="logo" href="index.html">NovaParts</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">
-    <span></span><span></span><span></span>
-  </button>
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="NovaParts home">NovaParts</a>
 
-  <nav id="mainnav" class="nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+    <!-- Desktop nav -->
+    <nav id="mainnav" class="nav" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-<main class="container">
-  <!-- HERO -->
-  <section class="card home-hero">
-    <div class="hero-copy">
-      <h1>Build smarter. <span class="grad">Buy better.</span></h1>
-      <p class="muted">
-        Minimal, fast, and curated PC parts for gamers and creators.
-        No fluff—just the best picks right now.
-      </p>
+    <!-- Cart -->
+    <a href="cart.html" class="cart-link" aria-label="Cart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7 6h14l-2 9H8L6 2H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span id="cart-count" class="cart-dot">0</span>
+    </a>
 
-      <div class="hero-cta">
-        <a class="btn primary" href="shop.html">Browse components</a>
-        <a class="btn ghost" href="about.html">Why NovaParts?</a>
+    <!-- Burger (right) -->
+    <button class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Off-canvas drawer -->
+    <nav id="drawer" class="drawer" aria-hidden="true" aria-label="Mobile">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Dim overlay -->
+    <div class="drawer-overlay" hidden></div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="card home-hero">
+      <div class="hero-copy">
+        <h1>Build smarter. <span class="grad">Buy better.</span></h1>
+        <p class="muted">
+          Minimal, fast, and curated PC parts for gamers and creators.
+          No fluff—just the best picks right now.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn primary" href="shop.html">Browse components</a>
+          <a class="btn ghost" href="about.html">Why NovaParts?</a>
+        </div>
+
+        <ul class="hero-stats" aria-label="NovaParts stats">
+          <li>
+            <span>3.2k+</span>
+            <small>happy builders</small>
+          </li>
+          <li>
+            <span>150+</span>
+            <small>tested parts</small>
+          </li>
+          <li>
+            <span>4.9★</span>
+            <small>avg. rating</small>
+          </li>
+        </ul>
       </div>
 
-      <ul class="hero-stats">
-  <li>
-    <span>3.2k+</span>
-    <small>happy builders</small>
-  </li>
-  <li>
-    <span>150+</span>
-    <small>tested parts</small>
-  </li>
-  <li>
-    <span>4.9★</span>
-    <small>avg. rating</small>
-  </li>
-</ul>
+      <div class="hero-media">
+        <img
+          class="hero-img"
+          src="img/board.png"
+          alt="Motherboard close-up with subtle lighting"
+          width="1600" height="900"
+          loading="eager" decoding="async" />
+      </div>
+    </section>
 
-    </div>
+    <!-- CATEGORIES -->
+    <h2 class="section-title">Shop by category</h2>
+    <section class="grid home-cats">
+      <a class="card cat" href="shop.html#gpu">
+        <img loading="lazy" src="https://postperspective.com/wp-content/uploads/2023/01/ezgif.com-gif-maker4-624x416.png" alt="GPU preview">
+        <strong>GPUs</strong>
+        <span class="muted">1440p &amp; 4K favorites</span>
+      </a>
 
-    <div class="hero-media">
-      <img
-        loading="lazy"
-        class="hero-img"
-        src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop"
-        alt="Minimal desktop setup"
-        width="1600" height="1066" loading="eager" />
-    </div>
-  </section>
+      <a class="card cat" href="shop.html#cpu">
+        <img loading="lazy" src="https://content.ibuypower.com/Images/Components/30136/CPU-AMDR7-7800X3D-2400.png" alt="CPU preview">
+        <strong>CPUs</strong>
+        <span class="muted">Gaming &amp; creator chips</span>
+      </a>
 
-  <!-- CATEGORIES -->
-  <h2 class="section-title">Shop by category</h2>
-  <section class="grid home-cats">
-    <a class="card cat" href="shop.html#gpu">
-      <img loading="lazy" src="https://postperspective.com/wp-content/uploads/2023/01/ezgif.com-gif-maker4-624x416.png" alt="">
-      <strong>GPUs</strong>
-      <span class="muted">1440p & 4K favorites</span>
-    </a>
-    <a class="card cat" href="shop.html#cpu">
-      <img loading="lazy" src="https://content.ibuypower.com/Images/Components/30136/CPU-AMDR7-7800X3D-2400.png" alt="">
-      <strong>CPUs</strong>
-      <span class="muted">Gaming & creator chips</span>
-    </a>
-    <a class="card cat" href="shop.html#ram">
-      <img loading="lazy" src="https://assets.micron.com/adobe/assets/urn:aaid:aem:835a69f3-ac69-45ab-8fc1-2d5c14cefb8c/renditions/transformpng-1024-1024.png/as/crucial-ddr5-pro-udimm-kit-front.png" alt="">
-      <strong>Memory</strong>
-      <span class="muted">Fast DDR5 kits</span>
-    </a>
-    <a class="card cat" href="shop.html#storage">
-      <img loading="lazy" src="https://assets.micron.com/adobe/assets/urn:aaid:aem:88eb2127-300d-46bf-ad90-822ef0708611/renditions/transformpng-1024-1024.png/as/crucial-ssd-p310-2280-front-view.png" alt="">
-      <strong>Storage</strong>
-      <span class="muted">NVMe best value</span>
-    </a>
-  </section>
+      <a class="card cat" href="shop.html#ram">
+        <img loading="lazy" src="https://assets.micron.com/adobe/assets/urn:aaid:aem:835a69f3-ac69-45ab-8fc1-2d5c14cefb8c/renditions/transformpng-1024-1024.png/as/crucial-ddr5-pro-udimm-kit-front.png" alt="Memory kit preview">
+        <strong>Memory</strong>
+        <span class="muted">Fast DDR5 kits</span>
+      </a>
 
-  <!-- HIGHLIGHTS -->
-  <h2 class="section-title">Editor’s highlights</h2>
-  <section class="grid highlights">
-    <article class="card hi">
-      <div class="hi-badge">Pick</div>
-      <h3>Ryzen 7 7800X3D</h3>
-      <p class="muted">Still the gaming king for most setups. Pair with a mid-range GPU for insane value.</p>
-      <a class="btn ghost" href="shop.html#cpu">View CPUs</a>
-    </article>
+      <a class="card cat" href="shop.html#storage">
+        <img loading="lazy" src="https://assets.micron.com/adobe/assets/urn:aaid:aem:88eb2127-300d-46bf-ad90-822ef0708611/renditions/transformpng-1024-1024.png/as/crucial-ssd-p310-2280-front-view.png" alt="SSD preview">
+        <strong>Storage</strong>
+        <span class="muted">NVMe best value</span>
+      </a>
+    </section>
 
-    <article class="card hi">
-      <div class="hi-badge">Value</div>
-      <h3>NVMe SSD 2TB</h3>
-      <p class="muted">PCIe 4.0 speeds without the premium. Perfect main drive for gaming rigs.</p>
-      <a class="btn ghost" href="shop.html#storage">View Storage</a>
-    </article>
+    <!-- HIGHLIGHTS -->
+    <h2 class="section-title">Editor’s highlights</h2>
+    <section class="grid highlights">
+      <article class="card hi">
+        <div class="hi-badge">Pick</div>
+        <h3>Ryzen 7 7800X3D</h3>
+        <p class="muted">Still the gaming king for most setups. Pair with a mid-range GPU for insane value.</p>
+        <a class="btn ghost" href="shop.html#cpu">View CPUs</a>
+      </article>
 
-    <article class="card hi">
-      <div class="hi-badge">Quiet</div>
-      <h3>240mm AIO</h3>
-      <p class="muted">Excellent thermals, low noise, clean look. Stealth build approved.</p>
-      <a class="btn ghost" href="shop.html#cooler">View Coolers</a>
-    </article>
-  </section>
+      <article class="card hi">
+        <div class="hi-badge">Value</div>
+        <h3>NVMe SSD 2TB</h3>
+        <p class="muted">PCIe 4.0 speeds without the premium. Perfect main drive for gaming rigs.</p>
+        <a class="btn ghost" href="shop.html#storage">View Storage</a>
+      </article>
 
-  <!-- CTA -->
-  <section class="card callout">
-    <h2>Need a parts list for your budget?</h2>
-    <p class="muted">Tell us what you play and your target resolution—we’ll suggest a clean, balanced build.</p>
-    <a class="btn primary" href="contact.html">Get recommendations</a>
-  </section>
-</main>
+      <article class="card hi">
+        <div class="hi-badge">Quiet</div>
+        <h3>240mm AIO</h3>
+        <p class="muted">Excellent thermals, low noise, clean look. Stealth build approved.</p>
+        <a class="btn ghost" href="shop.html#cooler">View Coolers</a>
+      </article>
+    </section>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> NovaParts</p>
-</footer>
+    <!-- CTA -->
+    <section class="card callout">
+      <h2>Need a parts list for your budget?</h2>
+      <p class="muted">Tell us what you play and your target resolution—we’ll suggest a clean, balanced build.</p>
+      <a class="btn primary" href="contact.html">Get recommendations</a>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <p>© <span id="year"></span> NovaParts</p>
+  </footer>
 </body>
 </html>

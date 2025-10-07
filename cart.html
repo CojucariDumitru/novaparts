@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Cart — NovaParts</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+<header class="site-header">
+    <a class="logo" href="index.html" aria-label="NovaParts home">NovaParts</a>
+
+    <!-- Desktop nav -->
+    <nav id="mainnav" class="nav" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Cart -->
+    <a href="cart.html" class="cart-link" aria-label="Cart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7 6h14l-2 9H8L6 2H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span id="cart-count" class="cart-dot">0</span>
+    </a>
+
+    <!-- Burger (right) -->
+    <button class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Off-canvas drawer -->
+    <nav id="drawer" class="drawer" aria-hidden="true" aria-label="Mobile">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Dim overlay -->
+    <div class="drawer-overlay" hidden></div>
+  </header>
+
+<main class="container">
+  <div class="card">
+    <div class="cart-header"><h1 style="margin:0;">Your Cart</h1></div>
+    <div id="cart-items" class="cart-list"></div>
+
+    <div class="cart-summary">
+      <div class="cart-total">
+        <span>Subtotal</span> <strong id="cart-subtotal">$0.00</strong>
+      </div>
+      <a href="checkout.html" class="btn primary">Checkout</a>
+    </div>
+  </div>
+</main>
+
+</body>
+<script>
+function price(n){return '$'+n.toFixed(2);}
+function renderCart(){
+  const cart=getCart();
+  const list=document.getElementById('cart-items');
+  const sub=document.getElementById('cart-subtotal');
+  if(!cart.length){
+    list.innerHTML = `<p>Your cart is empty. <a href="shop.html">Go shopping →</a></p>`;
+    sub.textContent='$0.00'; return;
+  }
+  list.innerHTML = cart.map(p=>`
+    <div class="cart-item">
+      <img class="cart-thumb" src="${p.img}" alt="${p.title}">
+      <div>
+        <h3 class="cart-title">${p.title}</h3>
+        <div class="cart-price">${price(p.price)}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.6rem;">
+        <div class="cart-qty">
+          <button aria-label="Decrease" onclick="cartChangeQty('${p.title.replace(/'/g,"\\'")}',-1)">−</button>
+          <input value="${p.qty}" readonly>
+          <button aria-label="Increase" onclick="cartChangeQty('${p.title.replace(/'/g,"\\'")}',1)">+</button>
+        </div>
+        <button class="btn-danger" onclick="cartRemove('${p.title.replace(/'/g,"\\'")}')">Remove</button>
+      </div>
+    </div>
+  `).join('');
+  const total=cart.reduce((a,b)=>a+b.price*b.qty,0);
+  sub.textContent=price(total);
+}
+renderCart();
+</script>
+<script src="js/script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  function price(n){return '$'+n.toFixed(2);}
+  function renderCart(){
+    const cart=getCart();
+    const list=document.getElementById('cart-items');
+    const sub=document.getElementById('cart-subtotal');
+    if(!cart.length){
+      list.innerHTML = `<p>Your cart is empty. <a href="shop.html">Go shopping →</a></p>`;
+      sub.textContent='$0.00'; return;
+    }
+    list.innerHTML = cart.map(p=>`
+      <div class="cart-item">
+        <img class="cart-thumb" src="${p.img}" alt="${p.title}">
+        <div>
+          <h3 class="cart-title">${p.title}</h3>
+          <div class="cart-price">${price(p.price)}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.6rem;">
+          <div class="cart-qty">
+            <button onclick="cartChangeQty('${p.title.replace(/'/g,"\\'")}',-1)">−</button>
+            <input value="${p.qty}" readonly>
+            <button onclick="cartChangeQty('${p.title.replace(/'/g,"\\'")}',1)">+</button>
+          </div>
+          <button class="btn-danger" onclick="cartRemove('${p.title.replace(/'/g,"\\'")}')">Remove</button>
+        </div>
+      </div>
+    `).join('');
+    const total=cart.reduce((a,b)=>a+b.price*b.qty,0);
+    sub.textContent=price(total);
+  }
+  renderCart();
+});
+</script>
+
+</html>

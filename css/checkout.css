@@ -1,0 +1,245 @@
+/* -------------------------------------------------
+   Checkout-only styles
+   These are all scoped under .checkout (body or wrapper)
+   so nothing leaks into Home/Shop/About/Contact.
+   ------------------------------------------------- */
+
+.checkout {
+  --bg: #0f141b;
+  --panel: #111821;
+  --muted: #9aa3ad;
+  --text: #e6edf3;
+  --accent: #3b82f6;
+  --accent-2: #8b5cf6;
+  --good: #22c55e;
+  --bad: #ef4444;
+
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* page container */
+.checkout .container,
+.checkout .checkout-wrap {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* Page title */
+.checkout .page-title {
+  font-size: clamp(28px, 2.4vw, 34px);
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin: 8px 0 20px;
+}
+
+/* Grid: form + summary */
+.checkout .grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+}
+
+@media (max-width: 960px) {
+  .checkout .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card panels */
+.checkout .panel {
+  background: radial-gradient(110% 100% at -20% -30%, rgba(120, 160, 255, .06), transparent 70%),
+              radial-gradient(110% 70% at 110% 110%, rgba(140, 120, 255, .06), transparent 60%),
+              var(--panel);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.02);
+}
+
+/* Panel content padding */
+.checkout .panel-body {
+  padding: 18px;
+}
+
+.checkout .panel h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 6px 0 14px;
+}
+
+/* Form groups */
+.checkout .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .checkout .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkout .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.checkout label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.checkout input,
+.checkout textarea,
+.checkout select {
+  width: 100%;
+  background: #0c1117;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.checkout textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.checkout input:focus,
+.checkout textarea:focus,
+.checkout select:focus {
+  border-color: rgba(99, 102, 241, .55);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, .18);
+}
+
+/* Payment block, card preview */
+.checkout .payment {
+  margin-top: 18px;
+}
+
+.checkout .pay-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 14px;
+}
+
+@media (max-width: 840px) {
+  .checkout .pay-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fake card preview */
+.checkout .card-preview {
+  background:
+    radial-gradient(100% 100% at 0% 0%, rgba(59,130,246,.38), transparent 60%),
+    radial-gradient(120% 100% at 120% 120%, rgba(139,92,246,.28), transparent 55%),
+    linear-gradient(135deg,#121a24,#0f141b 55%);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  min-height: 164px;
+}
+
+.checkout .card-logo {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .6px;
+  color: rgba(255,255,255,.85);
+}
+
+.checkout .card-number {
+  font: 600 18px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing: .8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+}
+
+.checkout .card-row {
+  display: flex;
+  gap: 10px;
+}
+
+.checkout .card-pill {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.06);
+  font: 600 12px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Place order button */
+.checkout .actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+.checkout .btn-primary {
+  background: linear-gradient(180deg, var(--accent), #316bdf);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.06);
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter .15s ease, transform .05s ease;
+}
+
+.checkout .btn-primary:active { transform: translateY(1px); }
+.checkout .btn-primary:hover  { filter: brightness(1.06); }
+
+/* Summary */
+.checkout .summary .panel-body {
+  padding: 18px 18px 8px;
+}
+
+.checkout .summary h2 {
+  margin-bottom: 10px;
+}
+
+.checkout .summary-list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.checkout .sum-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.06);
+}
+
+/* total footer */
+.checkout .sum-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 10px 16px;
+  border-top: 1px dashed rgba(255,255,255,.08);
+  margin-top: 8px;
+}
+
+.checkout .sum-total {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+/* small muted text */
+.checkout .muted { color: var(--muted); }
+
+/* DO NOT touch global img/button etc. anywhere else! */

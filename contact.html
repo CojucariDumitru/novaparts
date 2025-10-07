@@ -22,17 +22,40 @@
 </head>
 <body>
 <header class="site-header">
-  <a class="logo" href="index.html">NovaParts</a>
-  <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mainnav">
-    <span></span><span></span><span></span>
-  </button>
-  <nav id="mainnav" class="nav">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-  </nav>
-</header>
+    <a class="logo" href="index.html" aria-label="NovaParts home">NovaParts</a>
+
+    <!-- Desktop nav -->
+    <nav id="mainnav" class="nav" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Cart -->
+    <a href="cart.html" class="cart-link" aria-label="Cart">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7 6h14l-2 9H8L6 2H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span id="cart-count" class="cart-dot">0</span>
+    </a>
+
+    <!-- Burger (right) -->
+    <button class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Off-canvas drawer -->
+    <nav id="drawer" class="drawer" aria-hidden="true" aria-label="Mobile">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Dim overlay -->
+    <div class="drawer-overlay" hidden></div>
+  </header>
 
 <main class="container">
   <h1>Contact</h1>

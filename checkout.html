@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — NovaParts</title>
+
+  <!-- (Optional) keep your site css if you want header/footer styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Checkout-only CSS (scoped so it can't break other pages) -->
+  <style>
+    /* -------------------------------------------------
+       Checkout-only styles (scoped under .checkout)
+       ------------------------------------------------- */
+    .checkout {
+      --bg: #0f141b;
+      --panel: #111821;
+      --muted: #9aa3ad;
+      --text: #e6edf3;
+      --accent: #3b82f6;
+      --accent-2: #8b5cf6;
+      --good: #22c55e;
+      --bad: #ef4444;
+
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .checkout a { color: inherit; }
+
+    .checkout .container {
+      max-width: 1120px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    .checkout .page-title {
+      font-size: clamp(28px, 2.4vw, 34px);
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin: 8px 0 20px;
+    }
+
+    .checkout .grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 22px;
+    }
+    @media (max-width: 960px) {
+      .checkout .grid { grid-template-columns: 1fr; }
+    }
+
+    .checkout .panel {
+      background: radial-gradient(110% 100% at -20% -30%, rgba(120, 160, 255, .06), transparent 70%),
+                  radial-gradient(110% 70% at 110% 110%, rgba(140, 120, 255, .06), transparent 60%),
+                  var(--panel);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    .checkout .panel-body { padding: 18px; }
+
+    .checkout h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 6px 0 14px;
+    }
+
+    .checkout .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px) {
+      .checkout .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .checkout .field { display: flex; flex-direction: column; gap: 6px; }
+    .checkout label { font-size: 12px; color: var(--muted); }
+
+    .checkout input,
+    .checkout textarea,
+    .checkout select {
+      width: 100%;
+      background: #0c1117;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 12px;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .checkout textarea { min-height: 80px; resize: vertical; }
+
+    .checkout input:focus,
+    .checkout textarea:focus,
+    .checkout select:focus {
+      border-color: rgba(99, 102, 241, .55);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, .18);
+    }
+
+    .checkout .payment { margin-top: 18px; }
+
+    .checkout .pay-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+    }
+    @media (max-width: 840px) {
+      .checkout .pay-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Card preview */
+    .checkout .card-preview {
+      background:
+        radial-gradient(100% 100% at 0% 0%, rgba(59,130,246,.38), transparent 60%),
+        radial-gradient(120% 100% at 120% 120%, rgba(139,92,246,.28), transparent 55%),
+        linear-gradient(135deg,#121a24,#0f141b 55%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      min-height: 164px;
+    }
+    .checkout .card-logo {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .6px;
+      color: rgba(255,255,255,.85);
+    }
+    .checkout .card-number {
+      font: 600 18px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      letter-spacing: .8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.06);
+    }
+    .checkout .card-row { display: flex; gap: 10px; }
+    .checkout .card-pill {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.06);
+      font: 600 12px ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    .checkout .actions { margin-top: 16px; display: flex; gap: 12px; }
+    .checkout .btn-primary {
+      background: linear-gradient(180deg, var(--accent), #316bdf);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.06);
+      font-weight: 700;
+      cursor: pointer;
+      transition: filter .15s ease, transform .05s ease;
+    }
+    .checkout .btn-primary:hover { filter: brightness(1.06); }
+    .checkout .btn-primary:active { transform: translateY(1px); }
+
+    /* Summary */
+    .checkout .summary h2 { margin-bottom: 10px; }
+    .checkout .summary .panel-body { padding: 18px 18px 8px; }
+
+    .checkout .summary-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .checkout .sum-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .checkout .sum-footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 10px 16px;
+      border-top: 1px dashed rgba(255,255,255,.08);
+      margin-top: 8px;
+    }
+    .checkout .sum-total { font-weight: 800; font-size: 18px; }
+
+    .checkout .muted { color: var(--muted); }
+
+    /* Simple header spacing if your global header exists */
+    .checkout .site-header { position: sticky; top: 0; z-index: 10; }
+  </style>
+</head>
+<body class="checkout">
+  <!-- Optional: your site header (keeps your brand / nav). Safe to keep. -->
+  <header class="site-header">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a class="logo" href="index.html" style="font-weight:800;text-decoration:none;color:#9ecbff">NovaParts</a>
+      <nav class="nav" style="display:flex;gap:14px;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="cart.html" class="cart-link" aria-label="Cart" style="position:relative;text-decoration:none;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 6h14l-2 9H8L6 2H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span id="cart-count" class="cart-dot"
+              style="position:absolute;right:-10px;top:-10px;background:#3b82f6;color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;line-height:1;">
+          0
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Checkout</h1>
+
+    <div class="grid">
+      <!-- LEFT: form -->
+      <form id="checkout-form" class="panel" autocomplete="on">
+        <div class="panel-body">
+          <h2>Shipping details</h2>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="first">First name</label>
+              <input id="first" name="first" value="John" required>
+            </div>
+            <div class="field">
+              <label for="last">Last name</label>
+              <input id="last" name="last" value="Doe" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" value="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" value="+1 555 555 5555">
+            </div>
+            <div class="field">
+              <label for="zip">ZIP</label>
+              <input id="zip" name="zip" value="94105">
+            </div>
+            <div class="field">
+              <label for="addr">Address</label>
+              <input id="addr" name="addr" value="123 Market St">
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" value="San Francisco">
+            </div>
+            <div class="field">
+              <label for="country">Country</label>
+              <select id="country" name="country">
+                <option value="USA" selected>USA</option>
+                <option>Canada</option>
+                <option>UK</option>
+                <option>Germany</option>
+                <option>France</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="payment">
+            <h2>Payment</h2>
+
+            <div class="pay-grid">
+              <!-- Nice card preview -->
+              <div class="card-preview" aria-hidden="true">
+                <div class="card-logo">NovaCard</div>
+                <div id="pv-number" class="card-number">•••• •••• •••• ••••</div>
+                <div class="card-row">
+                  <div id="pv-name" class="card-pill">CARDHOLDER NAME</div>
+                  <div id="pv-exp" class="card-pill">MM/YY</div>
+                  <div id="pv-cvc" class="card-pill">•••</div>
+                </div>
+              </div>
+
+              <!-- Inputs -->
+              <div class="form-grid" style="grid-template-columns:1fr;">
+                <div class="field">
+                  <label for="cc-name">Cardholder name</label>
+                  <input id="cc-name" autocomplete="cc-name" value="John Doe" required>
+                </div>
+                <div class="field">
+                  <label for="cc-number">Card number</label>
+                  <input id="cc-number" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" required>
+                </div>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="cc-exp">Expiry (MM/YY)</label>
+                    <input id="cc-exp" inputmode="numeric" autocomplete="cc-exp" placeholder="12/28" required>
+                  </div>
+                  <div class="field">
+                    <label for="cc-cvc">CVC</label>
+                    <input id="cc-cvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:10px;">
+              <label for="notes">Notes</label>
+              <textarea id="notes" placeholder="Anything we should know?"></textarea>
+            </div>
+
+            <div class="actions">
+              <button class="btn-primary" type="submit">Place order</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- RIGHT: summary -->
+      <aside class="summary panel" aria-live="polite">
+        <div class="panel-body">
+          <h2>Order summary</h2>
+
+          <div id="summary-list" class="summary-list"></div>
+
+          <div class="sum-footer">
+            <span class="muted">Subtotal</span>
+            <strong id="summary-subtotal" class="sum-total">$0.00</strong>
+          </div>
+          <div class="sum-footer">
+            <span class="muted">Shipping</span>
+            <strong>Free</strong>
+          </div>
+          <div class="sum-footer">
+            <span class="muted">Total</span>
+            <strong id="summary-total" class="sum-total">$0.00</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Checkout logic (reads localStorage, mirrors card inputs, shows totals) -->
+  <script>
+    const CART_KEY = 'novaparts_cart';
+
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    function parseCart() {
+      try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+      catch { return []; }
+    }
+    function money(n) { return '$' + (n ?? 0).toFixed(2); }
+
+    function updateCartBadge() {
+      const list = parseCart();
+      const count = list.reduce((s, i) => s + (i.qty || 1), 0);
+      const dot = document.getElementById('cart-count');
+      if (dot) dot.textContent = count;
+    }
+
+    function renderSummary() {
+      const list = parseCart();
+      const box = document.getElementById('summary-list');
+      const sub = document.getElementById('summary-subtotal');
+      const tot = document.getElementById('summary-total');
+
+      box.innerHTML = '';
+      let subtotal = 0;
+
+      list.forEach(item => {
+        const qty = item.qty || 1;
+        const price = Number(item.price || 0);
+        subtotal += price * qty;
+
+        const row = document.createElement('div');
+        row.className = 'sum-item';
+        row.innerHTML = `
+          <div>
+            <div style="font-weight:700">${item.title || 'Item'}</div>
+            <div class="muted" style="font-size:12px;">Qty ${qty}</div>
+          </div>
+          <div style="font-weight:700">${money(price * qty)}</div>
+        `;
+        box.appendChild(row);
+      });
+
+      sub.textContent = money(subtotal);
+      tot.textContent = money(subtotal); // shipping free
+    }
+
+    function formatCCNumber(v) {
+      return v.replace(/\D/g,'').slice(0,16).replace(/(\d{4})(?=\d)/g,'$1 ').trim();
+    }
+    function formatExp(v) {
+      const s = v.replace(/\D/g,'').slice(0,4);
+      if (s.length <= 2) return s;
+      return s.slice(0,2) + '/' + s.slice(2);
+    }
+    function formatCVC(v) {
+      return v.replace(/\D/g,'').slice(0,4);
+    }
+
+    function wirePreview() {
+      const name = $('#cc-name');
+      const number = $('#cc-number');
+      const exp = $('#cc-exp');
+      const cvc = $('#cc-cvc');
+
+      const pvName = $('#pv-name');
+      const pvNumber = $('#pv-number');
+      const pvExp = $('#pv-exp');
+      const pvCvc = $('#pv-cvc');
+
+      name.addEventListener('input', () => pvName.textContent = name.value.trim() || 'CARDHOLDER NAME');
+      number.addEventListener('input', () => {
+        number.value = formatCCNumber(number.value);
+        pvNumber.textContent = number.value || '•••• •••• •••• ••••';
+      });
+      exp.addEventListener('input', () => {
+        exp.value = formatExp(exp.value);
+        pvExp.textContent = exp.value || 'MM/YY';
+      });
+      cvc.addEventListener('input', () => {
+        cvc.value = formatCVC(cvc.value);
+        pvCvc.textContent = cvc.value ? '•'.repeat(cvc.value.length) : '•••';
+      });
+    }
+
+    function handleSubmit() {
+      const form = document.getElementById('checkout-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // demo “success”
+        alert('✅ Order placed! (demo)\nWe did not charge any card.');
+        // Optional: clear cart & bounce home
+        localStorage.removeItem(CART_KEY);
+        updateCartBadge();
+        renderSummary();
+        window.location.href = 'index.html';
+      });
+    }
+
+    // init
+    updateCartBadge();
+    renderSummary();
+    wirePreview();
+    handleSubmit();
+  </script>
+</body>
+</html>
