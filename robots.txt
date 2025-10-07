@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://cojucaridumitru.github.io/novaparts/sitemap.xml
