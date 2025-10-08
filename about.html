@@ -12,15 +12,36 @@
 </head>
 
 <body>
+  <!-- ======== NAV BAR ======== -->
   <nav class="nav">
     <div class="container row">
-      <div class="brand"><a href="index.html">NovaParts</a></div>
-      <div class="menu"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html"
-          class="active">About</a><a href="contact.html">Contact</a></div>
-      <div class="icons"><button class="iconbtn" id="themeToggle">🌓</button><button class="iconbtn"
-          id="openCart">🛒<span class="badge" id="cartCount">0</span></button></div>
+      <a href="index.html" class="brand" id="brandLink">NovaParts</a>
+
+      <div class="menu" id="mainMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="icons">
+        <button id="themeToggle" class="iconbtn" aria-label="Toggle theme">🌗</button>
+        <button id="openCart" class="iconbtn" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+        <button id="hamburger" class="iconbtn only-mobile" aria-label="Open menu">☰</button>
+      </div>
     </div>
   </nav>
+  <nav id="sideMenu" class="drawer">
+    <div class="drawer-head">
+      <strong>Menu</strong>
+      <button id="closeDrawer" class="iconbtn">✕</button>
+    </div>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
   <main class="container">
     <section class="section">
       <div class="row">

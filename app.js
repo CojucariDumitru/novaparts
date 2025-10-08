@@ -9,9 +9,10 @@ const money = (n) => `$${(Math.round(n * 100) / 100).toFixed(2)}`;
 
 const stars = (n = 0) => {
   const r = Math.round(n);
-  return `<span class="stars" aria-label="${n} out of 5">${'★'.repeat(r)}${'☆'.repeat(5 - r)}</span>`;
+  return `<span class="stars" aria-label="${n} out of 5">${"★".repeat(
+    r
+  )}${"☆".repeat(5 - r)}</span>`;
 };
-
 
 // ---- Theme + year (shared across pages) ----
 (function initChrome() {
@@ -59,7 +60,6 @@ function card(p) {
   `;
   return el;
 }
-
 
 function renderProducts() {
   const grid = $("#productGrid");
@@ -295,21 +295,34 @@ document.addEventListener("DOMContentLoaded", function () {
    ============================================================ */
 
 async function openQuick(id) {
-  const list =
-    window.NP_PRODUCTS || (await (await fetch("products.json")).json());
-  const p = list.find((x) => x.id === id);
+  var list = window.NP_PRODUCTS;
+  if (!list || !list.length) {
+    var res = await fetch("products.json", { cache: "no-store" });
+    list = await res.json();
+  }
+  var p = list.find(function (x) {
+    return x.id === id;
+  });
   if (!p) return;
 
-  $("#modalImg").src = p.image;
-  $("#modalTitle").textContent = p.title;
-  $("#modalDesc").textContent = p.description || "";
-  $("#modalDesc").textContent = p.description || "";
-document.getElementById("modalStars")?.insertAdjacentHTML("afterbegin", stars(p.rating || 0));
-  $("#modalPrice").textContent = money(p.price);
-  $("#modalSku").textContent = p.sku || "";
-  $("#modalAdd").setAttribute("data-id", p.id);
+  var img = document.getElementById("modalImg");
+  var title = document.getElementById("modalTitle");
+  var desc = document.getElementById("modalDesc");
+  var price = document.getElementById("modalPrice");
+  var sku = document.getElementById("modalSku");
+  var addBtn = document.getElementById("modalAdd");
+  var starsEl = document.getElementById("modalStars");
+  var modal = document.getElementById("npModal");
 
-  $("#npModal").classList.add("show");
+  if (img) img.src = p.image;
+  if (title) title.textContent = p.title;
+  if (desc) desc.textContent = p.description || "";
+  if (price) price.textContent = money(p.price);
+  if (sku) sku.textContent = p.sku || "";
+  if (addBtn) addBtn.setAttribute("data-id", p.id);
+  if (starsEl) starsEl.innerHTML = stars(p.rating || 0); // clear then set once
+
+  if (modal) modal.classList.add("show");
 }
 
 function closeModal() {
@@ -415,6 +428,43 @@ async function hydrateSummary() {
   document.addEventListener("DOMContentLoaded", update);
 })();
 
+// === Mobile drawer: direct listeners (no optional chaining) ===
+document.addEventListener("DOMContentLoaded", function () {
+  var drawer = document.getElementById("sideMenu");
+  var backdrop = document.getElementById("drawerBackdrop");
+  var burger = document.getElementById("hamburger");
+  var closeX = document.getElementById("closeDrawer");
+
+  function openDrawer() {
+    if (drawer) drawer.classList.add("open");
+    if (backdrop) backdrop.classList.add("show");
+  }
+  function closeDrawer() {
+    if (drawer) drawer.classList.remove("open");
+    if (backdrop) backdrop.classList.remove("show");
+  }
+
+  if (burger)
+    burger.addEventListener(
+      "click",
+      function (e) {
+        e.preventDefault();
+        openDrawer();
+      },
+      false
+    );
+  if (closeX)
+    closeX.addEventListener(
+      "click",
+      function (e) {
+        e.preventDefault();
+        closeDrawer();
+      },
+      false
+    );
+  if (backdrop) backdrop.addEventListener("click", closeDrawer, false);
+});
+
 /* ============================================================
    BOOT
    ============================================================ */
@@ -439,8 +489,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // Mobile drawer controls
 const drawer = document.getElementById("sideMenu");
 const db = document.getElementById("drawerBackdrop");
-const openDrawer = () => { drawer?.classList.add("open"); db?.classList.add("show"); };
-const closeDrawer = () => { drawer?.classList.remove("open"); db?.classList.remove("show"); };
+const openDrawer = () => {
+  drawer?.classList.add("open");
+  db?.classList.add("show");
+};
+const closeDrawer = () => {
+  drawer?.classList.remove("open");
+  db?.classList.remove("show");
+};
 
 document.addEventListener("click", (e) => {
   if (e.target.closest("#hamburger")) openDrawer();
@@ -448,6 +504,11 @@ document.addEventListener("click", (e) => {
 });
 // Make sure cart buttons always respond
 document.addEventListener("click", (e) => {
-  if (e.target.id === "headerClear") { setCart([]); toast("Cart cleared"); }
-  if (e.target.id === "closeCart")   { closeCart(); }
+  if (e.target.id === "headerClear") {
+    setCart([]);
+    toast("Cart cleared");
+  }
+  if (e.target.id === "closeCart") {
+    closeCart();
+  }
 });
